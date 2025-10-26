@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Nutrition - BulkAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">BulkAI</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="nutrition.html" class="nav-link active">Log Nutrition</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Nutrition Form -->
+    <main class="nutrition-page">
+        <div class="form-container fade-in">
+            <div class="form-header">
+                <h1 class="form-title">Log Your Nutrition</h1>
+                <p class="form-subtitle">Track your daily meals and macros</p>
+            </div>
+
+            <form class="nutrition-form" id="nutritionForm">
+                <!-- Meal Type -->
+                <div class="form-group slide-up">
+                    <label for="mealType" class="form-label">Meal Type</label>
+                    <select id="mealType" name="mealType" class="form-input" required>
+                        <option value="">Select meal type</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="snack">Snack</option>
+                        <option value="post-workout">Post-Workout</option>
+                    </select>
+                </div>
+
+                <!-- Meal Name -->
+                <div class="form-group slide-up delay-1">
+                    <label for="mealName" class="form-label">Meal Name</label>
+                    <input 
+                        type="text" 
+                        id="mealName" 
+                        name="mealName" 
+                        class="form-input" 
+                        placeholder="e.g., Chicken and Rice Bowl"
+                        required
+                    >
+                </div>
+
+                <!-- Calories -->
+                <div class="form-group slide-up delay-2">
+                    <label for="calories" class="form-label">Calories</label>
+                    <div class="input-with-unit">
+                        <input 
+                            type="number" 
+                            id="calories" 
+                            name="calories" 
+                            class="form-input" 
+                            placeholder="0"
+                            min="0"
+                            required
+                        >
+                        <span class="input-unit">kcal</span>
+                    </div>
+                </div>
+
+                <!-- Macros Section -->
+                <div class="macros-section slide-up delay-3">
+                    <h3 class="section-title-small">Macronutrients</h3>
+                    <div class="macros-grid">
+                        <!-- Protein -->
+                        <div class="form-group">
+                            <label for="protein" class="form-label">
+                                <span class="macro-icon">🥩</span> Protein
+                            </label>
+                            <div class="input-with-unit">
+                                <input 
+                                    type="number" 
+                                    id="protein" 
+                                    name="protein" 
+                                    class="form-input" 
+                                    placeholder="0"
+                                    min="0"
+                                    step="0.1"
+                                    required
+                                >
+                                <span class="input-unit">g</span>
+                            </div>
+                        </div>
+
+                        <!-- Carbs -->
+                        <div class="form-group">
+                            <label for="carbs" class="form-label">
+                                <span class="macro-icon">🍞</span> Carbs
+                            </label>
+                            <div class="input-with-unit">
+                                <input 
+                                    type="number" 
+                                    id="carbs" 
+                                    name="carbs" 
+                                    class="form-input" 
+                                    placeholder="0"
+                                    min="0"
+                                    step="0.1"
+                                    required
+                                >
+                                <span class="input-unit">g</span>
+                            </div>
+                        </div>
+
+                        <!-- Fats -->
+                        <div class="form-group">
+                            <label for="fats" class="form-label">
+                                <span class="macro-icon">🥑</span> Fats
+                            </label>
+                            <div class="input-with-unit">
+                                <input 
+                                    type="number" 
+                                    id="fats" 
+                                    name="fats" 
+                                    class="form-input" 
+                                    placeholder="0"
+                                    min="0"
+                                    step="0.1"
+                                    required
+                                >
+                                <span class="input-unit">g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time -->
+                <div class="form-group slide-up delay-4">
+                    <label for="mealTime" class="form-label">Time</label>
+                    <input 
+                        type="time" 
+                        id="mealTime" 
+                        name="mealTime" 
+                        class="form-input" 
+                        required
+                    >
+                </div>
+
+                <!-- Notes -->
+                <div class="form-group slide-up delay-5">
+                    <label for="notes" class="form-label">Notes (Optional)</label>
+                    <textarea 
+                        id="notes" 
+                        name="notes" 
+                        class="form-input form-textarea" 
+                        placeholder="Any additional notes about this meal..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Submit Buttons -->
+                <div class="form-actions slide-up delay-6">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Log Meal</button>
+                </div>
+            </form>
+
+            <!-- Daily Summary -->
+            <div class="daily-summary slide-up delay-7">
+                <h3 class="section-title-small">Today's Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">Total Calories</div>
+                        <div class="summary-value" id="totalCalories">0 kcal</div>
+                        <div class="summary-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="caloriesProgress" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0% of 3500 kcal goal</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Protein</div>
+                        <div class="summary-value" id="totalProtein">0g</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Carbs</div>
+                        <div class="summary-value" id="totalCarbs">0g</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Fats</div>
+                        <div class="summary-value" id="totalFats">0g</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="nutrition.js"></script>
+</body>
+</html>

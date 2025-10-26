@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BulkAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">BulkAI</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="nutrition.html" class="nav-link btn-primary">Log Nutrition</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard">
+        <div class="dashboard-container">
+            <!-- Welcome Section -->
+            <div class="dashboard-header fade-in">
+                <h1 class="dashboard-title">Welcome back, Lifter!</h1>
+                <p class="dashboard-subtitle">Here's your progress overview</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid fade-in-delayed">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Current Weight</h3>
+                        <span class="card-icon">⚖️</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-value" id="currentWeight">155</div>
+                        <div class="metric-unit">lbs</div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="trend positive">+2.5 lbs this week</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daily Calories</h3>
+                        <span class="card-icon">🔥</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-value" id="dailyCalories">3200</div>
+                        <div class="metric-unit">kcal</div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="trend neutral">Target: 3500 kcal</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Protein Intake</h3>
+                        <span class="card-icon">🥩</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-value" id="proteinIntake">180</div>
+                        <div class="metric-unit">g</div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="trend positive">Above target</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Muscle Gained</h3>
+                        <span class="card-icon">💪</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metric-value" id="muscleGained">8.5</div>
+                        <div class="metric-unit">lbs</div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="trend positive">12 weeks progress</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Chart Section -->
+            <div class="chart-section slide-up">
+                <div class="dashboard-card full-width">
+                    <div class="card-header">
+                        <h3 class="card-title">Weight Progress</h3>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" data-period="week">Week</button>
+                            <button class="chart-btn" data-period="month">Month</button>
+                            <button class="chart-btn" data-period="all">All Time</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-container">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions slide-up delay-1">
+                <h2 class="section-title-small">Quick Actions</h2>
+                <div class="actions-grid">
+                    <a href="nutrition.html" class="action-card">
+                        <div class="action-icon">🍽️</div>
+                        <div class="action-title">Log Meal</div>
+                    </a>
+                    <div class="action-card" id="logWeightCard">
+                        <div class="action-icon">⚖️</div>
+                        <div class="action-title">Log Weight</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">📊</div>
+                        <div class="action-title">View Reports</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">⚙️</div>
+                        <div class="action-title">Settings</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-section slide-up delay-2">
+                <div class="dashboard-card full-width">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Activity</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">🍽️</div>
+                                <div class="activity-details">
+                                    <div class="activity-title">Logged breakfast</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                                <div class="activity-value">850 kcal</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">⚖️</div>
+                                <div class="activity-details">
+                                    <div class="activity-title">Weight check-in</div>
+                                    <div class="activity-time">1 day ago</div>
+                                </div>
+                                <div class="activity-value">155 lbs</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">💪</div>
+                                <div class="activity-details">
+                                    <div class="activity-title">Completed workout</div>
+                                    <div class="activity-time">1 day ago</div>
+                                </div>
+                                <div class="activity-value">Upper Body</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
