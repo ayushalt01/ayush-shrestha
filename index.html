@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BulkAI - Your AI Nutrition Coach for Healthy Weight Gain</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>💪 BulkAI</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#calculator">Calculator</a>
+                <a href="#chat">Ask BulkAI</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Body with BulkAI</h1>
+                <p class="hero-subtitle">Your AI-powered nutrition coach designed for skinny guys who want to gain healthy weight</p>
+                <button class="cta-button" onclick="scrollToCalculator()">Get Started</button>
+            </div>
+            <div class="hero-features">
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Personalized Plans</h3>
+                    <p>Tailored calorie targets based on your body and goals</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🍗</span>
+                    <h3>AI Meal Recommendations</h3>
+                    <p>Smart meal suggestions to hit your daily targets</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3>24/7 AI Coach</h3>
+                    <p>Ask BulkAI anything about nutrition and fitness</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Calculate Your Calorie Target</h2>
+            <p class="section-subtitle">Let's build your personalized nutrition plan</p>
+            
+            <div class="calculator-content">
+                <form id="bulkForm" class="bulk-form">
+                    <div class="form-group">
+                        <label for="weight">Current Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" placeholder="e.g., 60" required min="30" max="200" step="0.1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" name="height" placeholder="e.g., 175" required min="120" max="250">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" placeholder="e.g., 25" required min="15" max="80">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="activity">Activity Level</label>
+                        <select id="activity" name="activity" required>
+                            <option value="">Select activity level</option>
+                            <option value="1.2">Sedentary (little or no exercise)</option>
+                            <option value="1.375">Lightly active (1-3 days/week)</option>
+                            <option value="1.55">Moderately active (3-5 days/week)</option>
+                            <option value="1.725">Very active (6-7 days/week)</option>
+                            <option value="1.9">Extremely active (athlete)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goal">Weekly Weight Gain Goal (kg)</label>
+                        <select id="goal" name="goal" required>
+                            <option value="">Select your goal</option>
+                            <option value="0.25">0.25 kg/week (Slow & Steady)</option>
+                            <option value="0.5">0.5 kg/week (Recommended)</option>
+                            <option value="0.75">0.75 kg/week (Aggressive)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Calculate My Plan</button>
+                </form>
+                
+                <div id="results" class="results-container" style="display: none;">
+                    <h3>Your Personalized Nutrition Plan</h3>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <span class="result-label">Daily Calories</span>
+                            <span class="result-value" id="calorieTarget">0</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">Protein (g)</span>
+                            <span class="result-value" id="proteinTarget">0</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">Carbs (g)</span>
+                            <span class="result-value" id="carbsTarget">0</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">Fats (g)</span>
+                            <span class="result-value" id="fatsTarget">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="meal-recommendations">
+                        <h4>🍽️ AI-Recommended Meals</h4>
+                        <div id="mealList" class="meal-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat" class="chat-section">
+        <div class="container">
+            <h2 class="section-title">Ask BulkAI</h2>
+            <p class="section-subtitle">Get instant answers to your nutrition questions</p>
+            
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <strong>BulkAI:</strong> Hey there! 💪 I'm BulkAI, your nutrition coach. Ask me anything about gaining weight, meal planning, supplements, or workout nutrition!
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="chatForm" class="chat-input-form">
+                    <input type="text" id="chatInput" placeholder="Ask about nutrition, meals, supplements..." required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 BulkAI. Your AI-powered nutrition coach for healthy weight gain.</p>
+            <p class="disclaimer">Disclaimer: BulkAI provides general nutrition information. Consult with healthcare professionals for personalized medical advice.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
