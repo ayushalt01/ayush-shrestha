@@ -178,9 +178,9 @@ function setupChartControls() {
             chartBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             
-            // In a real app, you would load different data here
-            const period = this.dataset.period;
-            console.log('Loading chart data for period:', period);
+            // In a real app, you would load different data based on the selected period
+            // For now, we keep the same chart data for all periods
+            initializeChart();
         });
     });
 }
@@ -209,9 +209,8 @@ function setupQuickActions() {
     actionCards.forEach(card => {
         if (card.id !== 'logWeightCard' && !card.href) {
             card.addEventListener('click', function() {
-                const title = this.querySelector('.action-title').textContent;
-                console.log('Action clicked:', title);
                 // In a real app, you would navigate to the appropriate page
+                // For now, action cards without href will be inactive
             });
         }
     });
