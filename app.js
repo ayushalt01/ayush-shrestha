@@ -158,11 +158,18 @@ function addMessage(text, type) {
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
     
+    // Create strong element for the label
+    const strongElement = document.createElement('strong');
+    
     if (type === 'bot') {
-        contentDiv.innerHTML = `<strong>BulkAI:</strong> ${text}`;
+        strongElement.textContent = 'BulkAI:';
     } else {
-        contentDiv.innerHTML = `<strong>You:</strong> ${text}`;
+        strongElement.textContent = 'You:';
     }
+    
+    // Add the label and text safely
+    contentDiv.appendChild(strongElement);
+    contentDiv.appendChild(document.createTextNode(' ' + text));
     
     messageDiv.appendChild(contentDiv);
     messagesContainer.appendChild(messageDiv);
